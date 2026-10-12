@@ -1,8 +1,194 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>English Vocab Challenge</title>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STMG Squad</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;color:#27243a;background:linear-gradient(135deg,#fff0f8,#f0edff,#eaf6ff);min-height:100vh}.wrap{max-width:900px;margin:auto;padding:25px 16px 50px}.hero{text-align:center;padding:15px}.badge{display:inline-block;background:white;border:1px solid #eadcf3;border-radius:999px;padding:8px 14px;font-weight:800;color:#9b3e87}h1{font-size:clamp(2rem,6vw,3.5rem);margin:14px 0 8px;background:linear-gradient(90deg,#ff4fa3,#7c4dff,#4f8cff);-webkit-background-clip:text;color:transparent}.sub{color:#6d6a7d}.card{background:rgba(255,255,255,.95);border:1px solid #e7dff0;border-radius:24px;padding:24px;margin-top:18px;box-shadow:0 12px 35px #5b3a7a18}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}label{display:block;font-weight:800;margin-bottom:7px}select{width:100%;padding:13px;border:2px solid #e4dced;border-radius:14px;background:#fff;font-size:1rem}button{font:inherit}.primary{width:100%;margin-top:18px;padding:16px;border:0;border-radius:15px;color:#fff;font-weight:900;background:linear-gradient(90deg,#ff4fa3,#7c4dff);cursor:pointer}.hidden{display:none}.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-weight:800;color:#6d6a7d}.tag{background:#f0ebff;color:#6845b7;border-radius:999px;padding:7px 11px}.progress{height:10px;background:#eee9f4;border-radius:99px;margin:16px 0 22px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,#ff4fa3,#7c4dff)}.question{font-size:1.4rem;font-weight:900;line-height:1.35;margin-bottom:18px}.answers{display:grid;gap:11px}.answer{padding:15px;border:2px solid #e5deeb;border-radius:15px;background:#fff;text-align:left;font-weight:750;cursor:pointer}.answer.correct{border-color:#21b573;background:#eafff4}.answer.wrong{border-color:#ef476f;background:#fff0f3}.feedback{margin-top:15px;padding:14px;border-radius:14px;background:#f6f3fa;line-height:1.5}.next,.secondary{margin-top:14px;padding:14px;border:0;border-radius:14px;font-weight:900;cursor:pointer}.next{width:100%;background:#29263b;color:#fff}.result{text-align:center}.score{font-size:4rem;font-weight:1000;background:linear-gradient(90deg,#ff4fa3,#7c4dff);-webkit-background-clip:text;color:transparent}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}.stat{background:#f7f4fb;border-radius:15px;padding:13px}.stat b{display:block;font-size:1.4rem}.secondary{background:#fff;border:2px solid #ded6e8;margin:5px}@media(max-width:650px){.grid,.stats{grid-template-columns:1fr}.card{padding:18px}.question{font-size:1.2rem}}
-</style></head><body><div class="wrap"><section class="hero"><span class="badge">🇬🇧 1STMG1 • VOCAB CHALLENGE</span><h1>English Vocab Challenge</h1><p class="sub">60 questions • difficulté personnalisable • parties aléatoires</p></section>
-<section id="setup" class="card"><div class="grid"><div><label for="level">🎯 Difficulté</label><select id="level"><option value="easy">🟢 Facile</option><option value="medium">🟠 Moyen</option><option value="hard">🔴 Difficile</option><option value="mixed">🌈 Mélangé</option></select></div><div><label for="count">🔢 Nombre de questions</label><select id="count"><option>5</option><option selected>10</option><option>15</option><option>20</option><option>30</option><option>40</option></select></div><div><label for="mode">🧠 Mode</label><select id="mode"><option value="normal">QCM classique</option><option value="reverse">🇬🇧 → 🇫🇷</option><option value="mix">🔀 Tout mélanger</option></select></div></div><button id="start" class="primary">🚀 Commencer le quiz</button></section>
-<section id="quiz" class="card hidden"><div class="top"><span id="counter"></span><span id="tag" class="tag"></span></div><div class="progress"><div id="bar" class="bar"></div></div><div id="question" class="question"></div><div id="answers" class="answers"></div><div id="feedback" class="feedback hidden"></div><button id="next" class="next hidden">Question suivante →</button></section>
-<section id="result" class="card result hidden"><span class="badge">🏆 PARTIE TERMINÉE</span><div id="score" class="score"></div><p id="resultText"></p><div class="stats"><div class="stat"><b id="good">0</b> bonnes réponses</div><div class="stat"><b id="bad">0</b> erreurs</div><div class="stat"><b id="total">0</b> questions</div></div><button id="again" class="secondary">🔄 Rejouer</button><button id="settings" class="secondary">⚙️ Changer les réglages</button></section></div>
-<script>const BANK=[{"l": "easy", "q": "Que signifie « to go abroad » ?", "a": ["aller à l’étranger", "s’engager à faire quelque chose", "pertinent", "améliorer"], "c": 0, "e": "to go abroad = aller à l’étranger."}, {"l": "easy", "q": "Que signifie « to commit to doing something » ?", "a": ["s’engager à faire quelque chose", "aller à l’étranger", "pertinent", "améliorer"], "c": 0, "e": "to commit to doing something = s’engager à faire quelque chose."}, {"l": "easy", "q": "Que signifie « relevant » ?", "a": ["pertinent", "aller à l’étranger", "s’engager à faire quelque chose", "améliorer"], "c": 0, "e": "relevant = pertinent."}, {"l": "easy", "q": "Que signifie « to improve » ?", "a": ["améliorer", "aller à l’étranger", "s’engager à faire quelque chose", "pertinent"], "c": 0, "e": "to improve = améliorer."}, {"l": "easy", "q": "Que signifie « useful » ?", "a": ["utile", "aller à l’étranger", "s’engager à faire quelque chose", "pertinent"], "c": 0, "e": "useful = utile."}, {"l": "easy", "q": "Que signifie « to be focused » ?", "a": ["être concentré", "aller à l’étranger", "s’engager à faire quelque chose", "pertinent"], "c": 0, "e": "to be focused = être concentré."}, {"l": "easy", "q": "Que signifie « moreover » ?", "a": ["de plus", "aller à l’étranger", "s’engager à faire quelque chose", "pertinent"], "c": 0, "e": "moreover = de plus."}, {"l": "easy", "q": "Que signifie « thanks to » ?", "a": ["grâce à", "aller à l’étranger", "s’engager à faire quelque chose", "pertinent"], "c": 0, "e": "thanks to = grâce à."}, {"l": "easy", "q": "Que signifie « to be embarrassed » ?", "a": ["être gêné", "aller à l’étranger", "s’engager à faire quelque chose", "pertinent"], "c": 0, "e": "to be embarrassed = être gêné."}, {"l": "easy", "q": "Que signifie « advice » ?", "a": ["des conseils", "aller à l’étranger", "s’engager à faire quelque chose", "pertinent"], "c": 0, "e": "advice = des conseils."}, {"l": "easy", "q": "Que signifie « a foreign country » ?", "a": ["un pays étranger", "aller à l’étranger", "s’engager à faire quelque chose", "pertinent"], "c": 0, "e": "a foreign country = un pays étranger."}, {"l": "easy", "q": "Que signifie « currently » ?", "a": ["actuellement", "aller à l’étranger", "s’engager à faire quelque chose", "pertinent"], "c": 0, "e": "currently = actuellement."}, {"l": "easy", "q": "Que signifie « to help each other » ?", "a": ["s’entraider", "aller à l’étranger", "s’engager à faire quelque chose", "pertinent"], "c": 0, "e": "to help each other = s’entraider."}, {"l": "easy", "q": "Que signifie « to be confident » ?", "a": ["être sûr de soi", "aller à l’étranger", "s’engager à faire quelque chose", "pertinent"], "c": 0, "e": "to be confident = être sûr de soi."}, {"l": "easy", "q": "Quel est le mot anglais pour « aller à l’étranger » ?", "a": ["to go abroad", "to commit to doing something", "relevant", "to improve"], "c": 0, "e": "aller à l’étranger = to go abroad."}, {"l": "easy", "q": "Quel est le mot anglais pour « s’engager à faire quelque chose » ?", "a": ["to commit to doing something", "to go abroad", "relevant", "to improve"], "c": 0, "e": "s’engager à faire quelque chose = to commit to doing something."}, {"l": "easy", "q": "Quel est le mot anglais pour « pertinent » ?", "a": ["relevant", "to go abroad", "to commit to doing something", "to improve"], "c": 0, "e": "pertinent = relevant."}, {"l": "easy", "q": "Quel est le mot anglais pour « améliorer » ?", "a": ["to improve", "to go abroad", "to commit to doing something", "relevant"], "c": 0, "e": "améliorer = to improve."}, {"l": "easy", "q": "Quel est le mot anglais pour « utile » ?", "a": ["useful", "to go abroad", "to commit to doing something", "relevant"], "c": 0, "e": "utile = useful."}, {"l": "easy", "q": "Quel est le mot anglais pour « être concentré » ?", "a": ["to be focused", "to go abroad", "to commit to doing something", "relevant"], "c": 0, "e": "être concentré = to be focused."}, {"l": "medium", "q": "I want ___ abroad next year.", "a": ["to go abroad", "go", "advice"], "c": 0, "e": "La bonne réponse est « to go abroad »."}, {"l": "medium", "q": "This website is very ___.", "a": ["useful", "abroad", "embarrassed"], "c": 0, "e": "La bonne réponse est « useful »."}, {"l": "medium", "q": "___, she lives in Paris.", "a": ["Currently", "Moreover", "Relevant"], "c": 0, "e": "La bonne réponse est « Currently »."}, {"l": "medium", "q": "He is ___ on his homework.", "a": ["focused", "foreign", "useful"], "c": 0, "e": "La bonne réponse est « focused »."}, {"l": "medium", "q": "___ your help, I finished.", "a": ["Thanks to", "Currently", "Advice"], "c": 0, "e": "La bonne réponse est « Thanks to »."}, {"l": "medium", "q": "The teacher gave us some good ___.", "a": ["advice", "abroad", "focused"], "c": 0, "e": "La bonne réponse est « advice »."}, {"l": "medium", "q": "They ___ when they have difficulties.", "a": ["help each other", "go abroad", "commit"], "c": 0, "e": "La bonne réponse est « help each other »."}, {"l": "medium", "q": "She wants to ___ her English.", "a": ["improve", "be embarrassed", "advice"], "c": 0, "e": "La bonne réponse est « improve »."}, {"l": "medium", "q": "He feels ___ in front of the class.", "a": ["embarrassed", "relevant", "focused"], "c": 0, "e": "La bonne réponse est « embarrassed »."}, {"l": "medium", "q": "We need ___ information.", "a": ["relevant", "confident", "abroad"], "c": 0, "e": "La bonne réponse est « relevant »."}, {"l": "medium", "q": "She is ___ about her presentation.", "a": ["confident", "foreign", "advice"], "c": 0, "e": "La bonne réponse est « confident »."}, {"l": "medium", "q": "He decided to ___ studying every evening.", "a": ["commit to", "go abroad", "help each other"], "c": 0, "e": "La bonne réponse est « commit to »."}, {"l": "medium", "q": "___, this exercise is useful.", "a": ["Moreover", "Thanks to", "Currently"], "c": 0, "e": "La bonne réponse est « Moreover »."}, {"l": "medium", "q": "They plan to study in ___.", "a": ["a foreign country", "advice", "relevant"], "c": 0, "e": "La bonne réponse est « a foreign country »."}, {"l": "medium", "q": "Which phrase means « être concentré »?", "a": ["to be focused", "to be confident", "to be embarrassed"], "c": 0, "e": "La bonne réponse est « to be focused »."}, {"l": "medium", "q": "Which phrase means « s’entraider »?", "a": ["to help each other", "to go abroad", "to improve"], "c": 0, "e": "La bonne réponse est « to help each other »."}, {"l": "medium", "q": "Which word means « pertinent »?", "a": ["relevant", "useful", "currently"], "c": 0, "e": "La bonne réponse est « relevant »."}, {"l": "medium", "q": "Which word means « de plus »?", "a": ["moreover", "thanks to", "advice"], "c": 0, "e": "La bonne réponse est « moreover »."}, {"l": "medium", "q": "Which word means « utile »?", "a": ["useful", "foreign", "focused"], "c": 0, "e": "La bonne réponse est « useful »."}, {"l": "medium", "q": "Which word means « actuellement »?", "a": ["currently", "confident", "relevant"], "c": 0, "e": "La bonne réponse est « currently »."}, {"l": "hard", "q": "Choose the correct sentence.", "a": ["She committed to studying abroad.", "She committed to study abroad.", "She committed studying abroad."], "c": 0, "e": "La réponse correcte est « She committed to studying abroad. »."}, {"l": "hard", "q": "Choose the correct sentence.", "a": ["She wants to improve her English.", "She wants improve her English.", "She wants improving her English."], "c": 0, "e": "La réponse correcte est « She wants to improve her English. »."}, {"l": "hard", "q": "Choose the correct sentence.", "a": ["I am currently focused on my work.", "I currently focused my work.", "I am focused currently my work."], "c": 0, "e": "La réponse correcte est « I am currently focused on my work. »."}, {"l": "hard", "q": "Choose the correct sentence.", "a": ["Thanks to your advice, I feel more confident.", "Thanks your advice, I feel confident.", "Thanks to you advice, I feel confidence."], "c": 0, "e": "La réponse correcte est « Thanks to your advice, I feel more confident. »."}, {"l": "hard", "q": "Choose the correct sentence.", "a": ["This information is relevant to the question.", "This information is relevant the question.", "This information relevant to the question."], "c": 0, "e": "La réponse correcte est « This information is relevant to the question. »."}, {"l": "hard", "q": "Choose the correct sentence.", "a": ["We help each other with our homework.", "We help each other to our homework.", "We each other help homework."], "c": 0, "e": "La réponse correcte est « We help each other with our homework. »."}, {"l": "hard", "q": "Choose the best translation: « Grâce à ses conseils, elle est plus sûre d’elle. »", "a": ["Thanks to her advice, she is more confident.", "Moreover her advice, she is more focused.", "Currently her advice, she is embarrassed."], "c": 0, "e": "La réponse correcte est « Thanks to her advice, she is more confident. »."}, {"l": "hard", "q": "Choose the best translation: « Il veut aller à l’étranger pour améliorer son anglais. »", "a": ["He wants to go abroad to improve his English.", "He wants go abroad for improve his English.", "He wants abroad to improving his English."], "c": 0, "e": "La réponse correcte est « He wants to go abroad to improve his English. »."}, {"l": "hard", "q": "Choose the best translation: « De plus, ces informations sont pertinentes. »", "a": ["Moreover, this information is relevant.", "Thanks to, this information is useful.", "Currently, these informations are abroad."], "c": 0, "e": "La réponse correcte est « Moreover, this information is relevant. »."}, {"l": "hard", "q": "After “commit to”, which form is correct?", "a": ["studying", "study", "to study"], "c": 0, "e": "La réponse correcte est « studying »."}, {"l": "hard", "q": "Which phrase means « un pays étranger »?", "a": ["a foreign country", "an advice country", "a confident country"], "c": 0, "e": "La réponse correcte est « a foreign country »."}, {"l": "hard", "q": "Which phrase means « être gêné »?", "a": ["to be embarrassed", "to be relevant", "to be focused"], "c": 0, "e": "La réponse correcte est « to be embarrassed »."}, {"l": "hard", "q": "Which phrase means « être sûr de soi »?", "a": ["to be confident", "to be embarrassed", "to be foreign"], "c": 0, "e": "La réponse correcte est « to be confident »."}, {"l": "hard", "q": "Which sentence uses “moreover” naturally?", "a": ["The test is useful; moreover, it is fun.", "Moreover to the test, it is fun.", "The test moreoverly is fun."], "c": 0, "e": "La réponse correcte est « The test is useful; moreover, it is fun. »."}, {"l": "hard", "q": "Which sentence uses “thanks to” correctly?", "a": ["Thanks to you, I succeeded.", "Thanks you to, I succeeded.", "I thanks to you succeeded."], "c": 0, "e": "La réponse correcte est « Thanks to you, I succeeded. »."}, {"l": "hard", "q": "Which sentence uses “abroad” correctly?", "a": ["They are studying abroad.", "They are studying a abroad.", "They are abroad studying to."], "c": 0, "e": "La réponse correcte est « They are studying abroad. »."}, {"l": "hard", "q": "Which sentence uses “advice” correctly?", "a": ["My teacher gave me some advice.", "My teacher gave me an advice.", "My teacher advised me some advices."], "c": 0, "e": "La réponse correcte est « My teacher gave me some advice. »."}, {"l": "hard", "q": "Which sentence uses “relevant” correctly?", "a": ["The information is relevant to the topic.", "The information is relevant the topic.", "The information is relevance to the topic."], "c": 0, "e": "La réponse correcte est « The information is relevant to the topic. »."}, {"l": "hard", "q": "Which sentence uses “currently” correctly?", "a": ["She is currently studying.", "She currently is study.", "She is current studying."], "c": 0, "e": "La réponse correcte est « She is currently studying. »."}, {"l": "hard", "q": "Which sentence best combines “useful” and “moreover”?", "a": ["It is useful; moreover, it is easy.", "It useful moreover is easy.", "Moreover to useful, it is easy."], "c": 0, "e": "La réponse correcte est « It is useful; moreover, it is easy. »."}];const $=id=>document.getElementById(id);let game=[],i=0,score=0,locked=false;function shuffle(a){return [...a].sort(()=>Math.random()-.5)}function lab(l){return l==='easy'?'🟢 Facile':l==='medium'?'🟠 Moyen':'🔴 Difficile'}function prep(q){let x={...q,a:[...q.a]};if($('mode').value==='reverse'){let p=BANK.find(z=>z.a[z.c]===x.a[x.c]);if(p){let fr=p.e.split(' = ')[1].replace('.','');x.q='Que signifie en français : « '+x.a[x.c]+' » ?';x.a=shuffle([fr,...BANK.filter(z=>z!==p).slice(0,3).map(z=>z.e.split(' = ')[1].replace('.',''))]);x.c=x.a.indexOf(fr)}}return x}function start(){let lv=$('level').value,pool=lv==='mixed'?BANK:BANK.filter(q=>q.l===lv);let n=Math.min(+$('count').value,pool.length);game=shuffle(pool).slice(0,n).map(prep);i=0;score=0;$('setup').classList.add('hidden');$('result').classList.add('hidden');$('quiz').classList.remove('hidden');render()}function render(){let q=game[i];locked=false;$('counter').textContent='Question '+(i+1)+' / '+game.length;$('tag').textContent=lab(q.l);$('bar').style.width=(i/game.length*100)+'%';$('question').textContent=q.q;$('answers').innerHTML='';$('feedback').classList.add('hidden');$('next').classList.add('hidden');q.a.forEach((t,n)=>{let b=document.createElement('button');b.className='answer';b.textContent=t;b.type='button';b.onclick=()=>answer(n,b);$('answers').appendChild(b)})}function answer(n,btn){if(locked)return;locked=true;let q=game[i],bs=[...$('answers').children];bs.forEach((b,k)=>{b.disabled=true;if(k===q.c)b.classList.add('correct')});if(n===q.c){score++;btn.classList.add('correct');$('feedback').innerHTML='✅ <b>Bonne réponse !</b><br>'+q.e}else{btn.classList.add('wrong');$('feedback').innerHTML='❌ <b>Pas tout à fait.</b><br>La bonne réponse était <b>'+q.a[q.c]+'</b>.<br>'+q.e}$('feedback').classList.remove('hidden');$('next').classList.remove('hidden');$('bar').style.width=((i+1)/game.length*100)+'%'}$('next').onclick=()=>{i++;i>=game.length?finish():render()};function finish(){let p=Math.round(score/game.length*100);$('quiz').classList.add('hidden');$('result').classList.remove('hidden');$('score').textContent=p+'%';$('good').textContent=score;$('bad').textContent=game.length-score;$('total').textContent=game.length;$('resultText').textContent=p>=80?'🔥 Excellent !':p>=60?'👏 Bien joué !':'💪 Continue à t’entraîner !'}$('start').onclick=start;$('again').onclick=start;$('settings').onclick=()=>{$('result').classList.add('hidden');$('setup').classList.remove('hidden')};</script></body></html>
+:root {
+  --bg:#101827;
+  --card:#1b2940;
+  --text:#f4f7ff;
+  --accent:#8b9cff;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; font-family:Arial,sans-serif;
+  background:var(--bg); color:var(--text);
+}
+header {
+  padding:20px; border-bottom:1px solid #38445b;
+  display:flex; justify-content:space-between;
+  align-items:center; flex-wrap:wrap; gap:12px;
+}
+h1 span { color:var(--accent); }
+main { max-width:950px; margin:auto; padding:24px 16px; }
+.intro { margin-bottom:24px; line-height:1.6; color:#bdc8dc; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+.card { background:var(--card); padding:20px; border-radius:16px; }
+label { display:block; margin:16px 0 7px; font-weight:bold; }
+select,button {
+  width:100%; padding:12px; border-radius:10px;
+  border:1px solid #485570; font-size:15px;
+}
+select { background:var(--bg); color:var(--text); }
+button { background:var(--accent); color:#111827; border:0; font-weight:bold; cursor:pointer; margin-top:10px; }
+button:hover { filter:brightness(1.1); }
+.answer { background:var(--bg); color:var(--text); border:1px solid #485570; text-align:left; }
+#feedback { line-height:1.6; margin-top:16px; }
+.small { color:#bdc8dc; font-size:13px; line-height:1.5; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📚 STMG <span>Squad</span></h1>
+  <select id="theme" aria-label="Choisir un thème" style="width:auto">
+    <option value="#8b9cff">Violet</option>
+    <option value="#38bdf8">Bleu</option>
+    <option value="#34d399">Vert</option>
+    <option value="#f472b6">Rose</option>
+    <option value="#fb923c">Orange</option>
+  </select>
+</header>
+
+<main>
+  <h2>Révise à ta façon. 🚀</h2>
+  <p class="intro">
+    Choisis ta matière, révise tes chapitres et teste tes connaissances.
+    Le but : progresser ensemble !
+  </p>
+
+  <div class="grid">
+    <section class="card">
+      <h2>🎯 Configurer mon quiz</h2>
+
+      <label for="subject">Matière</label>
+      <select id="subject">
+        <option value="eco">📈 Économie</option>
+        <option value="droit">⚖️ Droit</option>
+      </select>
+
+      <label for="chapter">Chapitre</label>
+      <select id="chapter"></select>
+
+      <label for="level">Difficulté</label>
+      <select id="level">
+        <option value="facile">Facile</option>
+        <option value="moyen">Moyen</option>
+        <option value="difficile">Difficile</option>
+      </select>
+
+      <button id="start">Commencer le quiz</button>
+      <p class="small">Les questions disponibles dépendent du chapitre choisi.</p>
+    </section>
+
+    <section class="card" id="quiz">
+      <h2>Bienvenue dans STMG Squad !</h2>
+      <p>Ton prochain défi commence ici.</p>
+      <p class="small">Réponds aux questions et découvre ton score à la fin.</p>
+    </section>
+  </div>
+</main>
+
+<script>
+const chapters = {
+  eco: [
+    ["agents","Les agents économiques"],
+    ["flux","Les échanges et les flux"],
+    ["marche","Le marché : offre et demande"],
+    ["richesse","La création de richesse"]
+  ],
+  droit: [
+    ["regle","La règle de droit"],
+    ["sources","Les sources du droit"],
+    ["contrat","Le contrat"],
+    ["responsabilite","La responsabilité"]
+  ]
+};
+
+const questions = [
+  {s:"eco",c:"agents",l:"facile",q:"Quel agent économique consomme des biens et services ?",a:["Le ménage","Le tribunal","La mairie"],k:0,e:"Les ménages consomment des biens et services pour satisfaire leurs besoins."},
+  {s:"eco",c:"agents",l:"facile",q:"Quel est le rôle principal d'une entreprise ?",a:["Produire des biens ou services","Voter les lois","Rendre la justice"],k:0,e:"Une entreprise produit des biens ou des services."},
+  {s:"eco",c:"agents",l:"moyen",q:"Une entreprise verse un salaire. C'est un flux…",a:["Monétaire","Réel","Juridique"],k:0,e:"Le salaire est un flux monétaire. Le travail fourni est un flux réel."},
+  {s:"eco",c:"flux",l:"facile",q:"Un mouvement de biens ou de services est un flux…",a:["Réel","Monétaire","Bancaire"],k:0,e:"Un flux réel correspond notamment à un bien, un service ou du travail."},
+  {s:"eco",c:"marche",l:"facile",q:"Le prix dépend notamment…",a:["De l'offre et de la demande","Du prénom du vendeur","Du nombre de rues"],k:0,e:"Le marché met en relation l'offre et la demande."},
+  {s:"eco",c:"richesse",l:"facile",q:"Le PIB mesure principalement…",a:["La production de richesse d'un territoire","Le bonheur de chacun","Le nombre de lois"],k:0,e:"Le PIB mesure la richesse produite sur un territoire pendant une période."},
+  {s:"droit",c:"regle",l:"facile",q:"Une règle de droit est généralement…",a:["Obligatoire","Toujours facultative","Une préférence personnelle"],k:0,e:"Une règle de droit s'impose et son non-respect peut être sanctionné."},
+  {s:"droit",c:"sources",l:"facile",q:"Quel organe vote généralement les lois en France ?",a:["Le Parlement","Une entreprise","Un tribunal de commerce"],k:0,e:"Le Parlement est composé de l'Assemblée nationale et du Sénat."},
+  {s:"droit",c:"contrat",l:"facile",q:"Un contrat crée généralement…",a:["Des obligations entre les parties","Une nouvelle commune","Une nouvelle Constitution"],k:0,e:"Un contrat est un accord de volontés qui produit des effets juridiques."},
+  {s:"droit",c:"responsabilite",l:"facile",q:"La responsabilité civile vise généralement à…",a:["Réparer un dommage","Donner une note","Créer une entreprise"],k:0,e:"La responsabilité civile vise notamment à réparer le préjudice subi."}
+];
+
+const $ = id => document.getElementById(id);
+let quiz = [], index = 0, score = 0;
+
+function fillChapters() {
+  $("chapter").innerHTML = chapters[$("subject").value]
+    .map(([id,name]) => `<option value="${id}">${name}</option>`).join("");
+}
+$("subject").addEventListener("change", fillChapters);
+fillChapters();
+
+$("theme").addEventListener("change", () => {
+  document.documentElement.style.setProperty("--accent",$("theme").value);
+});
+
+$("start").addEventListener("click", () => {
+  const s = $("subject").value;
+  const c = $("chapter").value;
+  const l = $("level").value;
+  quiz = questions.filter(q => q.s===s && q.c===c &&
+    (q.l===l || (l==="moyen" && q.l==="facile") ||
+    (l==="difficile" && q.l!=="facile")));
+
+  if (!quiz.length) {
+    $("quiz").innerHTML = "<h2>Questions à venir 📚</h2><p>Ce chapitre n'a pas encore de questions à ce niveau. Essaie un autre chapitre ou une autre difficulté.</p>";
+    return;
+  }
+
+  quiz.sort(() => Math.random() - 0.5);
+  index = 0;
+  score = 0;
+  showQuestion();
+});
+
+function showQuestion() {
+  if (index >= quiz.length) {
+    $("quiz").innerHTML = `<h2>Quiz terminé ! 🎉</h2>
+      <h1>${score} / ${quiz.length}</h1>
+      <p>Bravo pour ta participation !</p>
+      <button id="again">Recommencer</button>`;
+    $("again").onclick = () => $("start").click();
+    return;
+  }
+
+  const q = quiz[index];
+  $("quiz").innerHTML = `<p class="small">QUESTION ${index+1} / ${quiz.length}</p>
+    <h2>${q.q}</h2>
+    <div id="answers"></div><div id="feedback"></div>`;
+
+  q.a.forEach((answer,i) => {
+    const b = document.createElement("button");
+    b.className = "answer";
+    b.textContent = String.fromCharCode(65+i) + " · " + answer;
+    b.onclick = () => {
+      document.querySelectorAll("#answers button").forEach(x => x.disabled=true);
+      if (i===q.k) {
+        score++;
+        b.style.borderColor="#34d399";
+      } else {
+        b.style.borderColor="#fb7185";
+      }
+      $("feedback").innerHTML = `<p>${i===q.k ? "✅ Bonne réponse !" : "❌ Pas tout à fait."}<br>${q.e}</p>`;
+      const next = document.createElement("button");
+      next.textContent = index===quiz.length-1 ? "Voir mon score" : "Question suivante →";
+      next.onclick = () => { index++; showQuestion(); };
+      $("feedback").append(next);
+    };
+    $("answers").append(b);
+  });
+}
+</script>
+</body>
+</html>
